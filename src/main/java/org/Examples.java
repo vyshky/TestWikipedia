@@ -5,8 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.security.Key;
+import java.util.concurrent.TimeUnit;
 
-public class wiki {
+public class Examples {
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
@@ -26,6 +27,7 @@ public class wiki {
 //        googleInterface.quit();
 
         WebDriver googleChrome = new ChromeDriver();
+        googleChrome.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
 
         try {
@@ -36,10 +38,7 @@ public class wiki {
             searchInputElement.sendKeys("HelloWorld");
 
             WebElement btnK = googleChrome.findElement(By.name("btnK"));
-            Thread.sleep(1000);
             btnK.click();  // btnK.sendKeys(Keys.ENTER);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

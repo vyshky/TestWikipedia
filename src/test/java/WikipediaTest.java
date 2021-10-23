@@ -1,9 +1,7 @@
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
-
 
 public final class WikipediaTest {
     private final String url = "https://ru.wikipedia.org";
