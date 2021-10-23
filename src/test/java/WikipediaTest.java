@@ -25,19 +25,9 @@ public final class WikipediaTest {
     public void test() {
         try {
             WikipediaPage page = new WikipediaPage(driver);
-
             page.open();
             page.setSearchText("Во все тяжкие");
             page.searchSuggestions();
-
-            page.open();
-            page.setSearchText("Hello");
-            page.searchSuggestions();
-
-            page.open();
-            page.setSearchText("Александр");
-            page.searchSuggestions();
-
         } catch (WebDriverException e) {
             e.printStackTrace();
             String textError = Paint.cyan("Поисковые подсказки для не найден");
@@ -47,11 +37,7 @@ public final class WikipediaTest {
 
     @After
     public void CloseDriver() {
-        try {
-            driver.quit();
-        } catch (WebDriverException e) {
-            e.printStackTrace();
-        }
+        driver.quit();
     }
 }
 
