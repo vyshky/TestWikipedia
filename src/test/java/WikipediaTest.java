@@ -7,7 +7,6 @@ import org.text.Paint;
 import java.util.concurrent.TimeUnit;
 
 public final class WikipediaTest {
-    private final String url = "https://ru.wikipedia.org";
     private WebDriver driver;
 
     @BeforeClass
@@ -24,15 +23,24 @@ public final class WikipediaTest {
 
     @Test
     public void test() {
-        driver.get(url);
-
         try {
             WikipediaPage page = new WikipediaPage(driver);
+
+            page.open();
             page.setSearchText("Во все тяжкие");
             page.searchSuggestions();
+
+            page.open();
+            page.setSearchText("Hello");
+            page.searchSuggestions();
+
+            page.open();
+            page.setSearchText("Александр");
+            page.searchSuggestions();
+
         } catch (WebDriverException e) {
             e.printStackTrace();
-            String textError = Paint.cyan("Поисковые подсказки не найден");
+            String textError = Paint.cyan("Поисковые подсказки для не найден");
             Assert.fail(textError);
         }
     }
