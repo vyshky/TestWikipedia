@@ -1,4 +1,4 @@
-package org;
+package org.exapmles;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
