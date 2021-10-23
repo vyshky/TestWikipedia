@@ -1,6 +1,9 @@
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.page.WikipediaPage;
+import org.text.Paint;
+
 import java.util.concurrent.TimeUnit;
 
 public final class WikipediaTest {
@@ -21,17 +24,16 @@ public final class WikipediaTest {
 
     @Test
     public void test() {
-
         driver.get(url);
-        try {
-            WebElement searchInputElement = driver.findElement(By.cssSelector("input[accesskey='f']"));
-            searchInputElement.sendKeys("hello");
-            WebElement suggestions = driver.findElement(By.cssSelector("div[rel='0']"));
-            System.out.println("Success");
 
-        } catch (WebDriverException  e) {
+        try {
+            WikipediaPage page = new WikipediaPage(driver);
+            page.setSearchText("Во все тяжкие");
+            page.searchSuggestions();
+        } catch (WebDriverException e) {
             e.printStackTrace();
-            Assert.fail("Driver exception");
+            String textError = Paint.cyan("Поисковые подсказки не найден");
+            Assert.fail(textError);
         }
     }
 
@@ -39,7 +41,7 @@ public final class WikipediaTest {
     public void CloseDriver() {
         try {
             driver.quit();
-        } catch (WebDriverException  e) {
+        } catch (WebDriverException e) {
             e.printStackTrace();
         }
     }
