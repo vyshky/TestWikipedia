@@ -27,7 +27,7 @@ public final class WikipediaTest {
             WikipediaPage page = new WikipediaPage(driver);
             page.open();
             page.setSearchText("Во все тяжкие");
-            page.searchSuggestions();
+            page.checkSuggestions();
         } catch (WebDriverException e) {
             e.printStackTrace();
             String textError = Paint.cyan("Поисковые подсказки для не найден");

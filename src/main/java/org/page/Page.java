@@ -24,11 +24,20 @@ public abstract class Page {
         stateOpen = true;
     }
 
+    public void closeBrowser() {
+        driver.quit();
+    }
+
     public void stateIsOpen(boolean stateOpen) {
         if (stateOpen) throw new IllegalStateException(Paint.cyan("The page is open, please reopen the page"));
     }
 
-    public void closeBrowser() {
-        driver.quit();
+    public void illegalArgumentException(String text) {
+
+        if (text == null) throw new IllegalArgumentException(Paint.cyan("SearchLine is null"));
+    }
+
+    public void CurrentUrlContainsUrl() {
+        if (!driver.getCurrentUrl().contains(url)) throw new RuntimeException(Paint.cyan("CurrentUrl != " + url));
     }
 }

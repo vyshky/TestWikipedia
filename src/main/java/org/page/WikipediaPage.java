@@ -16,17 +16,17 @@ public final class WikipediaPage extends Page {
     }
 
     public void setSearchText(String text) {
-        if (text == null) throw new IllegalArgumentException(Paint.cyan("SearchLine is null"));
-        if (!driver.getCurrentUrl().contains(url)) throw new RuntimeException(Paint.cyan("CurrentUrl != " + url));
+        illegalArgumentException(text);
+        CurrentUrlContainsUrl();
         searchInputElement = driver.findElement(By.cssSelector(searchLine));
         this.searchInputElement.sendKeys(text);
         System.out.println(searchInputElement);
     }
 
-
-    public void searchSuggestions() {
-        if (!driver.getCurrentUrl().contains(url)) throw new RuntimeException(Paint.cyan("CurrentUrl != " + url));
+    public void checkSuggestions() {
+        CurrentUrlContainsUrl();
         searchSuggestion = driver.findElement(By.cssSelector("div[rel='0']"));
         System.out.println(searchSuggestion);
     }
+
 }
