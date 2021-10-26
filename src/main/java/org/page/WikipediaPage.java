@@ -1,13 +1,13 @@
 package org.page;
 
 import org.openqa.selenium.*;
-import org.text.Paint;
 
 public final class WikipediaPage extends Page {
     private static final String url = "https://ru.wikipedia.org";
-    private String searchLine = "input[accesskey='f']";
+    private By searchLine = By.cssSelector("input[accesskey='f']");
+    private By searchSuggestion = By.cssSelector("div[rel='0']");
     private WebElement searchInputElement;
-    private WebElement searchSuggestion;
+    private WebElement searchSuggestionElement;
 
 
     public WikipediaPage(WebDriver driver) {
@@ -17,16 +17,16 @@ public final class WikipediaPage extends Page {
 
     public void setSearchText(String text) {
         illegalArgumentException(text);
-        CurrentUrlContainsUrl();
-        searchInputElement = driver.findElement(By.cssSelector(searchLine));
+        currentUrlContainsUrl();
+        searchInputElement = driver.findElement(searchLine);
         this.searchInputElement.sendKeys(text);
         System.out.println(searchInputElement);
     }
 
     public void checkSuggestions() {
-        CurrentUrlContainsUrl();
-        searchSuggestion = driver.findElement(By.cssSelector("div[rel='0']"));
-        System.out.println(searchSuggestion);
+        currentUrlContainsUrl();
+        searchSuggestionElement = driver.findElement(searchSuggestion);
+        System.out.println(searchSuggestionElement);
     }
 
 }

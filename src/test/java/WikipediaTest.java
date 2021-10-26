@@ -2,7 +2,7 @@ import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.page.WikipediaPage;
-import org.text.Paint;
+import org.util.PaintTextUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,13 +30,13 @@ public final class WikipediaTest {
             page.checkSuggestions();
         } catch (WebDriverException e) {
             e.printStackTrace();
-            String textError = Paint.cyan("Поисковые подсказки для не найден");
+            String textError = PaintTextUtil.cyan("Поисковые подсказки для не найден");
             Assert.fail(textError);
         }
     }
 
     @After
-    public void CloseDriver() {
+    public void closeDriver() {
         driver.quit();
     }
 }
